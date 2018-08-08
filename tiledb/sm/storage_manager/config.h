@@ -63,6 +63,8 @@ class Config {
     bool dedup_coords_;
     bool check_coord_dups_;
     bool check_coord_oob_;
+    std::string rest_server_address_;
+    std::string rest_server_serialization_format_;
 
     SMParams() {
       array_schema_cache_size_ = constants::array_schema_cache_size;
@@ -76,6 +78,9 @@ class Config {
       dedup_coords_ = false;
       check_coord_dups_ = true;
       check_coord_oob_ = true;
+      rest_server_address_ = "";
+      rest_server_serialization_format_ =
+          constants::serialization_default_format;
     }
   };
 
@@ -398,6 +403,12 @@ class Config {
 
   /** Sets the tile cache size, properly parsing the input value. */
   Status set_sm_tile_cache_size(const std::string& value);
+
+  /** Set the rest server address */
+  Status set_sm_rest_server_address(const std::string& value);
+
+  /** Set the rest server serialization format */
+  Status set_sm_rest_server_serialization_format(const std::string& value);
 
   /** Sets the number of VFS threads. */
   Status set_vfs_num_threads(const std::string& value);
