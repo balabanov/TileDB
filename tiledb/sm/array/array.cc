@@ -450,7 +450,9 @@ Status Array::open(
 
   if (remote_) {
     tiledb::sm::ArraySchema* arraySchema;
+    Config config = this->storage_manager_->config();
     RETURN_NOT_OK(tiledb::rest::get_array_schema_from_rest(
+        &config,
         rest_server_,
         array_uri_.to_string(),
         serialization_type_,
@@ -491,7 +493,9 @@ Status Array::open_at(
   timestamp_ = timestamp;
   if (remote_) {
     tiledb::sm::ArraySchema* arraySchema;
+    Config config = this->storage_manager_->config();
     RETURN_NOT_OK(tiledb::rest::get_array_schema_from_rest(
+        &config,
         rest_server_,
         array_uri_.to_string(),
         serialization_type_,
