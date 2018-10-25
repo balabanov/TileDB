@@ -276,7 +276,11 @@ TEST_CASE_METHOD(
   rc = tiledb_array_schema_load(ctx_, uri.c_str(), &array_schema_returned);
   REQUIRE(rc == TILEDB_OK);
 
-  tiledb::rest::delete_array_schema_from_rest((tiledb::sm::Config*)config_, REST_SERVER, uri, tiledb::sm::SerializationType::JSON);
+  tiledb::rest::delete_array_schema_from_rest(
+      (tiledb::sm::Config*)config_,
+      REST_SERVER,
+      uri,
+      tiledb::sm::SerializationType::JSON);
   tiledb_array_schema_free(&array_schema);
   tiledb_array_schema_free(&array_schema_returned);
 }
@@ -368,7 +372,11 @@ TEST_CASE_METHOD(
   REQUIRE(data_buffer[2] == 3);
   REQUIRE(data_buffer[3] == 4);
 
-  tiledb::rest::delete_array_schema_from_rest((tiledb::sm::Config*)config_, REST_SERVER, array_name, tiledb::sm::SerializationType::JSON);
+  tiledb::rest::delete_array_schema_from_rest(
+      (tiledb::sm::Config*)config_,
+      REST_SERVER,
+      array_name,
+      tiledb::sm::SerializationType::JSON);
 
   // Clean up
   tiledb_array_free(&array);
@@ -465,7 +473,11 @@ TEST_CASE_METHOD(
   REQUIRE(data_buffer[2] == 4);
   REQUIRE(data_buffer[3] == 5);
 
-  tiledb::rest::delete_array_schema_from_rest((tiledb::sm::Config*)config_, REST_SERVER, array_name, tiledb::sm::SerializationType::JSON);
+  tiledb::rest::delete_array_schema_from_rest(
+      (tiledb::sm::Config*)config_,
+      REST_SERVER,
+      array_name,
+      tiledb::sm::SerializationType::JSON);
 
   // Clean up
   tiledb_array_free(&array);
@@ -577,7 +589,11 @@ TEST_CASE_METHOD(
   REQUIRE(data_buffer[2] == 3);
   REQUIRE(data_buffer[3] == 4);
 
-  tiledb::rest::delete_array_schema_from_rest((tiledb::sm::Config*)config_, REST_SERVER, array_name, tiledb::sm::SerializationType::JSON);
+  tiledb::rest::delete_array_schema_from_rest(
+      (tiledb::sm::Config*)config_,
+      REST_SERVER,
+      array_name,
+      tiledb::sm::SerializationType::JSON);
 
   // Clean up
   tiledb_array_free(&array);
