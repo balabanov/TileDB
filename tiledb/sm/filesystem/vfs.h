@@ -128,6 +128,18 @@ class VFS {
   Status create_bucket(const URI& uri) const;
 
   /**
+   * Returns the size of the files in the input directory. Note that
+   * this function is **not recursive**, i.e., it will calculate
+   * the sum of the files in the directory one level deep.
+   *
+   * @param dir_name The input directory.
+   * @param dir_size The directory size to be retrieved, as the
+   *     sum of the files one level deep.
+   * @return Status
+   */
+  Status dir_size(const URI& dir_name, uint64_t* dir_size) const;
+
+  /**
    * Deletes an object-store bucket.
    *
    * @param uri The name of the bucket to be deleted.

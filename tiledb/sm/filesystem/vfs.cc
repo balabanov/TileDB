@@ -144,6 +144,22 @@ Status VFS::create_dir(const URI& uri) const {
   STATS_FUNC_OUT(vfs_create_dir);
 }
 
+Status VFS::dir_size(const URI& dir_name, uint64_t* dir_size) const {
+  // Get children
+  std::vector<URI> children;
+  RETURN_NOT_OK(ls(dir_name, &children));
+
+  // Sum up the children sizes
+  *dir_size = 0;
+  uint64_t size;
+  for (const auto& uri : children) {
+    RETURN_NOT_OK(file_size(uri, &size));
+    *dir_size += size;
+  }
+
+  return Status::Ok();
+}
+
 Status VFS::touch(const URI& uri) const {
   STATS_FUNC_IN(vfs_create_file);
 
